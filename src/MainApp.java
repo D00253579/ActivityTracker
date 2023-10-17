@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -58,13 +59,27 @@ public class MainApp {
         System.out.println("5: Type of Activity");
         System.out.println("6: Distance (Ascending/Descending)");
     }
+//Method to display the data passed in from the CSV
+    public static void displayData(ArrayList<Activity> activities) throws IOException{
+    System.out.println("\n==============DISPLAY DATA==============\n");
+    /*enhanced for loop to cycle through the data in the arraylist and pass it to the object
+         'a' to access class methods. */
+    for (Activity a:activities){
 
+        //                    System.out.println(a.toString());
+        /*Displaying the data in a neat matter using printf to include an appropriate amount of
+                        white space and to round the doubles down to 1 decimal point*/
 
-    public static void main(String[] args) throws IOException {
+        System.out.printf("%10s,%11s,%4d,%5.1f,%7.1f\n",a.getActivityType(),a.getDate(),a.getDuration(),a.getDistance(),a.getHeartRate());
+    }
+    }
+
+    public static void main(String[] args)throws IOException {
         ArrayList<Activity> activities = new ArrayList<>();
         readFile("Activities.csv", activities, true);
-
-
+  /*Cycle through each piece of data in the CSV file and allows us to run our
+                    class commands and isolate each piece of data.
+                    */
         Scanner key=new Scanner(System.in);
         int choice;
         do {
@@ -72,17 +87,26 @@ public class MainApp {
             choice=key.nextInt();
             switch (choice){
                 case 1:{
-                    /*Cycle through each piece of data in the CSV file and allows us to run our
-                    class commands and isolate each piece of data.
-                    */
-                    System.out.println("\n==============DISPLAY ALL DATA==============\n");
-                    for (Activity a:activities){
-//                    System.out.println(a.toString());
-                        /*Displaying the data in a neat matter using printf to include an appropriate amount of
-                        white space and to round the doubles down to 1 decimal point*/
-
-                        System.out.printf("%10s,%11s,%4d,%5.1f,%7.1f\n",a.getActivityType(),a.getDate(),a.getDuration(),a.getDistance(),a.getHeartRate());
+                displayData(activities);
+                break;
                 }
+                case 2:{
+
+
+                }
+                case 3:{
+                    ;
+                }
+                case 4:{
+                    /*Accessing compareTo method in Activity class
+                    to sort data by duration (Ascending/Descending)
+                     */
+                    Collections.sort(activities);
+                    displayData(activities);
+                    break;
+                }
+                case 5:{
+
                 }
             }
         }while(choice != 0);

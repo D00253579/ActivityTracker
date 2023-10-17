@@ -1,4 +1,4 @@
-public class Activity {
+public class Activity implements Comparable<Activity> {
 private String activityType;
 private String date;
 private int duration;
@@ -75,5 +75,15 @@ private double heartRate;
                 ", distance=" + distance +
                 ", heartRate=" + heartRate +
                 '}';
+    }
+//Sorting duration by descending
+
+public int compareTo(Activity a){
+        if (duration<a.getDuration()){
+            return 1;
+        }else if (duration>a.getDuration()) {
+            return -1;
+        }
+return 0;
     }
 }
