@@ -64,6 +64,8 @@ private double heartRate;
         return heartRate;
     }
 
+
+
     @Override
     public String toString() {
         return "Activity{" +

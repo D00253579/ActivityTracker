@@ -48,9 +48,44 @@ public class MainApp {
 
         return new Activity(activityType, date, duration, distance, heartRate);
     }
+    public static void displayMenu(){
+        System.out.println("\n==============================ACTIVITY TRACKER===============================");
+        System.out.println("0: Exit");
+        System.out.println("1: Display All data");
+        System.out.println("2: Calories Burned (Descending)");
+        System.out.println("3: Date (Ascending/Descending)");
+        System.out.println("4: Activity Duration (Ascending/Descending)");
+        System.out.println("5: Type of Activity");
+        System.out.println("6: Distance (Ascending/Descending)");
+    }
+
 
     public static void main(String[] args) throws IOException {
         ArrayList<Activity> activities = new ArrayList<>();
         readFile("Activities.csv", activities, true);
+
+
+        Scanner key=new Scanner(System.in);
+        int choice;
+        do {
+            displayMenu();
+            choice=key.nextInt();
+            switch (choice){
+                case 1:{
+                    /*Cycle through each piece of data in the CSV file and allows us to run our
+                    class commands and isolate each piece of data.
+                    */
+                    System.out.println("\n==============DISPLAY ALL DATA==============\n");
+                    for (Activity a:activities){
+//                    System.out.println(a.toString());
+                        /*Displaying the data in a neat matter using printf to include an appropriate amount of
+                        white space and to round the doubles down to 1 decimal point*/
+
+                        System.out.printf("%10s,%11s,%4d,%5.1f,%7.1f\n",a.getActivityType(),a.getDate(),a.getDuration(),a.getDistance(),a.getHeartRate());
+                }
+                }
+            }
+        }while(choice != 0);
     }
+
 }
