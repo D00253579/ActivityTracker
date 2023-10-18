@@ -1,89 +1,43 @@
-public class Activity implements Comparable<Activity> {
-private String activityType;
-private String date;
-private int duration;
-private double distance;
-private double heartRate;
 
-//CONSTRUCTORS
-    public Activity(){
-        this.activityType = "";
-        this.date = "";
-        this.duration = 0;
-        this.distance = 0.0;
-        this.heartRate = 0.0;
-    }
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
-    public Activity(String activityType, String date, int duration, double distance, double heartRate) {
-        this.activityType = activityType;
-        this.date = date;
-        this.duration = duration;
-        this.distance = distance;
-        this.heartRate = heartRate;
-    }
+public class Activity {
 
-    //SETTERS
-    public void setActivityType(String activityType) {
-        this.activityType = activityType;
-    }
+    ArrayList<ActivityDetails> activities = new ArrayList<>();
 
-    public void setDate(String date) {
-        this.date = date;
-    }
+    //Method to display the data passed in from the CSV
+    public void displayData(ArrayList<ActivityDetails> activities) throws IOException {
+        System.out.println("\n==============DISPLAY DATA==============\n");
+    /*enhanced for loop to cycle through the data in the arraylist and pass it to the object
+         'a' to access class methods. */
+        for (ActivityDetails a : activities) {
 
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
+            //                    System.out.println(a.toString());
+        /*Displaying the data in a neat matter using printf to include an appropriate amount of
+                        white space and to round the doubles down to 1 decimal point*/
 
-    public void setDistance(double distance) {
-        this.distance = distance;
-    }
-
-    public void setHeartRate(double heartRate) {
-        this.heartRate = heartRate;
-    }
-
-    //GETTERS
-    public String getActivityType() {
-        return activityType;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public double getDistance() {
-        return distance;
-    }
-
-    public double getHeartRate() {
-        return heartRate;
-    }
-
-
-
-    @Override
-    public String toString() {
-        return "Activity{" +
-                "activityType='" + activityType + '\'' +
-                ", date='" + date + '\'' +
-                ", duration=" + duration +
-                ", distance=" + distance +
-                ", heartRate=" + heartRate +
-                '}';
-    }
-//Sorting duration by descending
-
-public int compareTo(Activity a){
-        if (duration<a.getDuration()){
-            return 1;
-        }else if (duration>a.getDuration()) {
-            return -1;
+            System.out.printf("%10s,%11s,%4d,%5.1f,%7.1f\n", a.getActivityType(), a.getDate(), a.getDuration(), a.getDistance(), a.getHeartRate());
         }
-return 0;
     }
+
+    //Sorting duration by ascending
+    //using lambda
+
+    public void displayDurationAsc() {
+        Collections.sort(activities,
+                (ActivityDetails a1, ActivityDetails a2) ->
+                {
+                    return a1.getDuration() - a2.getDuration());
+                });
+        displayData();
+    }
+
+//        Collections.sort(activities, (a1, a2) ->
+//        {
+//            return  a1.getDuration() - a2.getDuration());
+//        });
+
+
 }
