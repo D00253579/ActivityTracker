@@ -67,6 +67,7 @@ public class MainApp {
   /*Cycle through each piece of data in the CSV file and allows us to run our
                     class commands and isolate each piece of data.
                     */
+        Activity a=new Activity();
         Scanner key=new Scanner(System.in);
         int choice;
         do {
@@ -74,7 +75,7 @@ public class MainApp {
             choice=key.nextInt();
             switch (choice){
                 case 1:{
-                displayData(activities);
+                a.displayData(activities);
                 break;
                 }
                 case 2:{
@@ -88,8 +89,8 @@ public class MainApp {
                     /*Accessing compareTo method in ActivityDetails class
                     to sort data by duration (Ascending/Descending)
                      */
-                    Collections.sort(activities);
-                    displayData(activities);
+                    a.displayDurationAsc();
+                    a.displayData(activities);
                     break;
                 }
                 case 5:{

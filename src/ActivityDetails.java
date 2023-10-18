@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class ActivityDetails {
+public class ActivityDetails implements Comparable<ActivityDetails> {
 
     private String activityType;
     private String date;
