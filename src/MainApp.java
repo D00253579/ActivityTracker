@@ -99,11 +99,19 @@ public class MainApp {
                     System.out.println("TEST32");
                     break;
                 }
+                case 6:{
+                    System.out.println("Ascending Distance:");
+                    comp = new DistanceComparator();
+                    Collections.sort(activities, comp);
+                    a.displayData(activities);
+
+                    System.out.println("\nDescending Distance:");
+                    comp = new DescDistanceComparator();
+                    Collections.sort(activities,comp);
+                    a.displayData(activities);
+                }
             }
         }while(choice != 0);
     }
-
-
-    //Test
 }
 
