@@ -23,7 +23,7 @@ public class MainApp {
             }else{
                 headersRead = true;
             }
-            System.out.println(line);
+//            System.out.println(line);
         }
     }
 
@@ -78,22 +78,24 @@ public class MainApp {
                 break;
                 }
                 case 2:{
-
-
+                    System.out.println("TEST");
+                break;
                 }
                 case 3:{
-
+                    System.out.println("Test");
+                    break;
                 }
                 case 4:{
-                    /*Accessing compareTo method in ActivityDetails class
+/*Accessing compareTo method in ActivityDetails class
                     to sort data by duration (Ascending/Descending)
                      */
-                    a.displayDurationAsc();
-                    a.displayData(activities);
+a.displayDurationDesc(activities);
+
                     break;
                 }
                 case 5:{
-
+                    System.out.println("TEST32");
+                    break;
                 }
             }
         }while(choice != 0);

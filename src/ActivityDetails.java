@@ -2,7 +2,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class ActivityDetails implements Comparable<ActivityDetails> {
-
+@Override
+public int compareTo(ActivityDetails a) {
+    if (duration < a.getDuration()) {
+        return -1;
+    } else if (duration > a.getDuration()) {
+        return 1;
+    }
+    return 0;
+}
     private String activityType;
     private String date;
     private int duration;
@@ -74,14 +82,8 @@ public class ActivityDetails implements Comparable<ActivityDetails> {
     }
 //Sorting duration by descending
 
-    public int compareTo(ActivityDetails a) {
-        if (duration < a.getDuration()) {
-            return 1;
-        } else if (duration > a.getDuration()) {
-            return -1;
-        }
-        return 0;
-    }
+
+
 
 }
 
