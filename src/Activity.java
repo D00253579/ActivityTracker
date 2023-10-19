@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Activity {
-    ArrayList<ActivityDetails> activities = new ArrayList<>();
+     ArrayList<ActivityDetails> activities = new ArrayList<>();
 
     //Method to display the data passed in from the CSV
     public void displayData(ArrayList<ActivityDetails> activities) throws IOException {
@@ -22,13 +22,22 @@ public class Activity {
     //Sorting duration by ascending
     //using lambda
 
-    public void displayDurationAsc ()throws IOException {
+    public void displayDurationDesc (ArrayList<ActivityDetails> activities)throws IOException {
+        Collections.sort(activities,
+                (ActivityDetails a1, ActivityDetails a2) ->
+                {
+                    return a2.getDuration() - a1.getDuration();
+                });
+        displayData(activities);
+    }
+
+    public void displayDurationAsc (ArrayList<ActivityDetails> activities)throws IOException {
         Collections.sort(activities,
                 (ActivityDetails a1, ActivityDetails a2) ->
                 {
                     return a1.getDuration() - a2.getDuration();
                 });
-        displayData(activities);
+    displayData(activities);
     }
 
 //        Collections.sort(activities, (a1, a2) ->
