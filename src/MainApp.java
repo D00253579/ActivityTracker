@@ -92,7 +92,7 @@ public class MainApp {
                     to sort data by duration (Ascending/Descending)
                      */
                     a.displayDurationDesc(activities);
-//Descending lambda
+//Descending lambdacilkahdcjakfa
                     break;
                 }
                 case 5:{
