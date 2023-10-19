@@ -1,7 +1,10 @@
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+import java.util.StringTokenizer;
+import java.util.Comparator;
 public class MainApp {
     public static void readFile(String fileName, ArrayList<ActivityDetails> activities, boolean hasHeaders) throws IOException {
         //reads in the activities csv file
@@ -67,19 +70,18 @@ public class MainApp {
         Activity a=new Activity();
         Scanner key=new Scanner(System.in);
         int choice;
-
         Comparator<ActivityDetails> comp = null;
         do {
             displayMenu();
             choice=key.nextInt();
             switch (choice){
                 case 1:{
-                a.displayData(activities);
-                break;
+                    a.displayData(activities);
+                    break;
                 }
                 case 2:{
                     System.out.println("TEST");
-                break;
+                    break;
                 }
                 case 3:{
                     System.out.println("Test");
@@ -89,8 +91,8 @@ public class MainApp {
 /*Accessing compareTo method in ActivityDetails class
                     to sort data by duration (Ascending/Descending)
                      */
-a.displayDurationDesc(activities);
-
+                    a.displayDurationDesc(activities);
+//Descending lambda
                     break;
                 }
                 case 5:{
@@ -104,3 +106,4 @@ a.displayDurationDesc(activities);
 
     //Test
 }
+
