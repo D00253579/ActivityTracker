@@ -23,11 +23,8 @@ public class Activity {
     //using lambda
 
     public void displayDurationAsc ()throws IOException {
-        Collections.sort(activities,
-                (ActivityDetails a1, ActivityDetails a2) ->
-                {
-                    return a1.getDuration() - a2.getDuration();
-                });
+        Collections.sort(activities, (a1, a2) ->
+                a1.getDuration() - a2.getDuration());
         displayData(activities);
     }
 

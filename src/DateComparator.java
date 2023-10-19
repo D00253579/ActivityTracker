@@ -1,7 +1,8 @@
 import java.util.Comparator;
 
-public class DateComparator implements Comparator<Activity> {
-public int compare(Activity a1, Activity a2){
-    //TEMPORARY
+public class DateComparator implements Comparator<ActivityDetails> {
+public int compare(ActivityDetails a1, ActivityDetails a2)
+{
     return 1;
-}}
+}
+}

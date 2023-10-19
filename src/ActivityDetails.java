@@ -47,7 +47,6 @@ public class ActivityDetails implements Comparable<ActivityDetails> {
         return heartRate;
     }
 
-
     //SETTERS
     public void setActivityType(String activityType) {
         this.activityType = activityType;
@@ -68,7 +67,6 @@ public class ActivityDetails implements Comparable<ActivityDetails> {
     public void setHeartRate(double heartRate) {
         this.heartRate = heartRate;
     }
-
 
     @Override
     public String toString() {

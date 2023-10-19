@@ -1,9 +1,6 @@
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class MainApp {
     public static void readFile(String fileName, ArrayList<ActivityDetails> activities, boolean hasHeaders) throws IOException {
@@ -70,6 +67,8 @@ public class MainApp {
         Activity a=new Activity();
         Scanner key=new Scanner(System.in);
         int choice;
+
+        Comparator<ActivityDetails> comp = null;
         do {
             displayMenu();
             choice=key.nextInt();
