@@ -39,7 +39,21 @@ public class Activity {
                 });
         displayData(activities);
     }
-public void displayIntensity(ArrayList<ActivityDetails> activities){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void displayIntensity(ArrayList<ActivityDetails> activities){
     for (ActivityDetails a : activities) {
  if (a.getActivityType().equals("Swimming")){
      System.out.println("Activity: "+a.getActivityType()+" Intensity: "+a.getIntensitySwimming());

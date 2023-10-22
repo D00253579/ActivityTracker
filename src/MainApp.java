@@ -58,8 +58,8 @@ public class MainApp {
         System.out.println("4: ActivityDetails Duration (Ascending/Descending)");
         System.out.println("5: Type of ActivityDetails");
         System.out.println("6: Distance (Ascending/Descending)");
-        System.out.println("7: Display intensity");
-        System.out.println("8: Display Calories Burned");
+        System.out.println("8: Display intensity");
+        System.out.println("9: Display Calories Burned");
     }
 
 
@@ -116,12 +116,12 @@ public class MainApp {
                     a.displayData(activities);
                 break;
                 }
-                case 7:{
+                case 8:{
                     System.out.println("=================INTENSITY===============");
                     a.displayIntensity(activities);
                     break;
                 }
-                case 8:{
+                case 9:{
                     System.out.println("=====CALORIES BURNED=====");
                     a.displayCaloriesBurned(activities);
                 }
