@@ -1,8 +1,11 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
 
 public class DateComparator implements Comparator<ActivityDetails> {
-public int compare(ActivityDetails a1, ActivityDetails a2)
-{
-    return 1;
-}
+
+    @Override
+    public int compare(ActivityDetails a1, ActivityDetails a2) {
+        return 1;
+    }
 }

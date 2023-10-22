@@ -2,15 +2,27 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class ActivityDetails implements Comparable<ActivityDetails> {
-@Override
-public int compareTo(ActivityDetails a) {
-    if (duration < a.getDuration()) {
-        return -1;
-    } else if (duration > a.getDuration()) {
-        return 1;
+
+    public int compare(ActivityDetails a) {
+        if (duration == a.duration) {
+            if (distance == a.distance) {
+                return activityType.compareTo(a.activityType);
+            }
+            return (int) (distance - a.distance);
+        }
+        return a.duration - duration;
     }
-    return 0;
-}
+
+    @Override
+    public int compareTo(ActivityDetails a) {
+        if (duration < a.getDuration()) {
+            return -1;
+        } else if (duration > a.getDuration()) {
+            return 1;
+        }
+        return 0;
+    }
+
     private String activityType;
     private String date;
     private int duration;
@@ -80,10 +92,6 @@ public int compareTo(ActivityDetails a) {
     public String toString() {
         return "ActivityDetails{" + "activityType='" + activityType + '\'' + ", date='" + date + '\'' + ", duration=" + duration + ", distance=" + distance + ", heartRate=" + heartRate + '}';
     }
-//Sorting duration by descending
-
-
-
 
 }
 

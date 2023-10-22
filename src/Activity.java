@@ -19,17 +19,8 @@ public class Activity {
         }
     }
 
-    //Sorting duration by ascending
-    //using lambda
-
-    public void displayDurationDesc (ArrayList<ActivityDetails> activities)throws IOException {
-        Collections.sort(activities,
-                (ActivityDetails a1, ActivityDetails a2) ->
-                {
-                    return a2.getDuration() - a1.getDuration();
-                });
-        displayData(activities);
-    }
+    //Sorting duration by ascending and descending
+    //using lambda expression
 
     public void displayDurationAsc (ArrayList<ActivityDetails> activities)throws IOException {
         Collections.sort(activities,
@@ -40,10 +31,25 @@ public class Activity {
         displayData(activities);
     }
 
+    public void displayDurationDesc (ArrayList<ActivityDetails> activities)throws IOException {
+        Collections.sort(activities,
+                (ActivityDetails a1, ActivityDetails a2) ->
+                {
+                    return a2.getDuration() - a1.getDuration();
+                });
+        displayData(activities);
+    }
+
 //        Collections.sort(activities, (a1, a2) ->
 //        {
 //            return  a1.getDuration() - a2.getDuration());
 //        });
+
+//display by natural ordering
+    public void displayNaturalOrdering(ArrayList<ActivityDetails> activities) throws IOException {
+        Collections.sort(activities);
+        displayData(activities);
+    }
 
 
 }
