@@ -17,6 +17,9 @@ public int compareTo(ActivityDetails a) {
     private double distance;
     private double heartRate;
 
+    public static enum Intensity{VeryLight, Light, Moderate, Vigorous, VeryVigorous}
+
+
     //CONSTRUCTORS
     public ActivityDetails() {
         this.activityType = "";
@@ -32,6 +35,49 @@ public int compareTo(ActivityDetails a) {
         this.duration = duration;
         this.distance = distance;
         this.heartRate = heartRate;
+    }
+
+    public Intensity getIntensitySwimming(){
+if (distance<1.25){
+return Intensity.VeryLight;
+}else if (distance<2){
+return Intensity.Light;
+    }else if (distance<2.75)
+{
+    return Intensity.Moderate;
+}else if (distance<3.5){
+    return Intensity.Vigorous;
+}else{
+    return Intensity.VeryVigorous;
+}
+    }
+    public Intensity getIntensityRunning(){
+        if (distance>4){
+            return Intensity.VeryLight;
+        }else if (distance>4 && distance<8){
+            return Intensity.Light;
+        }else if (distance>8 && distance<12)
+        {
+            return Intensity.Moderate;
+        }else if (distance>12 && distance<16){
+            return Intensity.Vigorous;
+        }else{
+            return Intensity.VeryVigorous;
+        }
+    }
+    public Intensity getIntensityCycling(){
+        if (distance>8){
+            return Intensity.VeryLight;
+        }else if (distance>8 && distance<16){
+            return Intensity.Light;
+        }else if (distance>17 && distance<25)
+        {
+            return Intensity.Moderate;
+        }else if (distance>25 && distance<33){
+            return Intensity.Vigorous;
+        }else{
+            return Intensity.VeryVigorous;
+        }
     }
 
     //GETTERS

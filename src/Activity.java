@@ -39,11 +39,23 @@ public class Activity {
                 });
         displayData(activities);
     }
+public void displayIntensity(ArrayList<ActivityDetails> activities){
+    for (ActivityDetails a : activities) {
+ if (a.getActivityType().equals("Swimming")){
+     System.out.println("Activity: "+a.getActivityType()+" Intensity: "+a.getIntensitySwimming());
+ }else  if (a.getActivityType().equals("Running")){
+     System.out.println("Activity: "+a.getActivityType()+" Intensity: "+a.getIntensityRunning());
+ }else  if (a.getActivityType().equals("Cycling")){
+     System.out.println("Activity: "+a.getActivityType()+" Intensity: "+a.getIntensityCycling());
+ }
+    }
+}
+public void displayCaloriesBurned(ArrayList<ActivityDetails> activities){
+        double calories=0;
 
-//        Collections.sort(activities, (a1, a2) ->
-//        {
-//            return  a1.getDuration() - a2.getDuration());
-//        });
-
-
+        for (ActivityDetails a: activities){
+calories=a.getDistance()*a.getDuration();
+            System.out.println("Calories Burned: "+calories);
+        }
+}
 }
