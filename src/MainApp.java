@@ -61,7 +61,10 @@ public class MainApp {
         System.out.println("5: Type of Activity");
         System.out.println("6: Distance (Ascending/Descending)");
         System.out.println("7: Display Natural Ordering");
+        System.out.println("8: Display intensity");
+        System.out.println("9: Display Calories Burned");
     }
+
 
     public static void main(String[] args) throws IOException {
         ArrayList<ActivityDetails> activities = new ArrayList<>();
@@ -88,7 +91,7 @@ public class MainApp {
                 case 3: {
                     System.out.println("Date Ascending");
                     comp = new DateComparator();
-                    Collections.sort(activities,comp);
+                    Collections.sort(activities, comp);
                     a.displayData(activities);
 
                     System.out.println("Date Descending");
@@ -100,11 +103,11 @@ public class MainApp {
 /*Accessing compareTo method in ActivityDetails class
                     to sort data by duration (Ascending/Descending)
                      */
-                    System.out.println("Duration Ascending");
-                    a.displayDurationAsc(activities);
-
+                    //Descending
                     System.out.println("Duration Descending");
                     a.displayDurationDesc(activities);
+                    System.out.println("Duration Ascending");
+                    a.displayDurationAsc(activities);
                     break;
                 }
                 case 5: {
@@ -129,6 +132,17 @@ public class MainApp {
                 case 7: {
                     System.out.println("Natural Ordering: ");
                     a.displayNaturalOrdering(activities);
+                    break;
+                }
+
+                case 8: {
+                    System.out.println("=================INTENSITY===============");
+                    a.displayIntensity(activities);
+                    break;
+                }
+                case 9: {
+                    System.out.println("=====CALORIES BURNED=====");
+                    a.displayCaloriesBurned(activities);
                 }
             }
         } while (choice != 0);
