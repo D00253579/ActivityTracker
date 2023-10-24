@@ -19,19 +19,9 @@ public class Activity {
         }
     }
 
-    //Sorting duration by ascending
-    //using lambda
-
-    public void displayDurationDesc (ArrayList<ActivityDetails> activities)throws IOException {
-        Collections.sort(activities,
-                (ActivityDetails a1, ActivityDetails a2) ->
-                {
-                    return a2.getDuration() - a1.getDuration();
-                });
-        displayData(activities);
-    }
-
-    public void displayDurationAsc (ArrayList<ActivityDetails> activities)throws IOException {
+    //Sorting duration by ascending and descending
+    //using lambda expression
+    public void displayDurationAsc(ArrayList<ActivityDetails> activities) throws IOException {
         Collections.sort(activities,
                 (ActivityDetails a1, ActivityDetails a2) ->
                 {
@@ -40,36 +30,39 @@ public class Activity {
         displayData(activities);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public void displayIntensity(ArrayList<ActivityDetails> activities){
-    for (ActivityDetails a : activities) {
- if (a.getActivityType().equals("Swimming")){
-     System.out.println("Activity: "+a.getActivityType()+" Intensity: "+a.getIntensitySwimming());
- }else  if (a.getActivityType().equals("Running")){
-     System.out.println("Activity: "+a.getActivityType()+" Intensity: "+a.getIntensityRunning());
- }else  if (a.getActivityType().equals("Cycling")){
-     System.out.println("Activity: "+a.getActivityType()+" Intensity: "+a.getIntensityCycling());
- }
+    public void displayDurationDesc(ArrayList<ActivityDetails> activities) throws IOException {
+        Collections.sort(activities,
+                (ActivityDetails a1, ActivityDetails a2) ->
+                {
+                    return a2.getDuration() - a1.getDuration();
+                });
+        displayData(activities);
     }
-}
-public void displayCaloriesBurned(ArrayList<ActivityDetails> activities){
-        double calories=0;
 
-        for (ActivityDetails a: activities){
-calories=a.getDistance()*a.getDuration();
-            System.out.println("Calories Burned: "+calories);
+    //display by natural ordering
+    public void displayNaturalOrdering(ArrayList<ActivityDetails> activities) throws IOException {
+        Collections.sort(activities);
+        displayData(activities);
+    }
+
+    public void displayIntensity(ArrayList<ActivityDetails> activities) {
+        for (ActivityDetails a : activities) {
+            if (a.getActivityType().equals("Swimming")) {
+                System.out.println("Activity: " + a.getActivityType() + " Intensity: " + a.getIntensitySwimming());
+            } else if (a.getActivityType().equals("Running")) {
+                System.out.println("Activity: " + a.getActivityType() + " Intensity: " + a.getIntensityRunning());
+            } else if (a.getActivityType().equals("Cycling")) {
+                System.out.println("Activity: " + a.getActivityType() + " Intensity: " + a.getIntensityCycling());
+            }
         }
-}
+    }
+
+    public void displayCaloriesBurned(ArrayList<ActivityDetails> activities) {
+        double calories = 0;
+
+        for (ActivityDetails a : activities) {
+            calories = a.getDistance() * a.getDuration();
+            System.out.println("Calories Burned: " + calories);
+        }
+    }
 }
