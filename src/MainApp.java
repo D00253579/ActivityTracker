@@ -63,6 +63,7 @@ public class MainApp {
         System.out.println("7: Display Natural Ordering");
         System.out.println("8: Display intensity");
         System.out.println("9: Display Calories Burned");
+
     }
 
 
@@ -86,17 +87,27 @@ public class MainApp {
                 }
                 case 2: {
                     System.out.println("Calories Burned Descending");
+
+                    Collections.sort(activities, new Comparator<ActivityDetails>() {
+                        @Override
+                        public int compare(ActivityDetails o1, ActivityDetails o2) {
+                            if (o1.getCaloriesBurned() > o2.getCaloriesBurned()) {
+                                return -1;
+                            } else if (o1.getCaloriesBurned() < o2.getCaloriesBurned()) {
+                                return 1;
+                            }
+                            return 0;
+                        }
+                    });
+                    a.displayCaloriesBurned(activities);
                     break;
                 }
                 case 3: {
-                    System.out.println("Date Ascending");
-                    comp = new DateComparator();
-                    Collections.sort(activities, comp);
-                    a.displayData(activities);
-
-                    System.out.println("Date Descending");
-                    Collections.reverse(activities);
-                    a.displayData(activities);
+//                    System.out.println("Date Ascending");
+//                    comp = new DateComparator();
+//                    Collections.sort(activities, comp);
+//                    a.displayData(activities);
+a.DateIsolation(activities);
                     break;
                 }
                 case 4: {
@@ -140,10 +151,15 @@ public class MainApp {
                     a.displayIntensity(activities);
                     break;
                 }
+                //TODO: Inner class for calories burned
                 case 9: {
                     System.out.println("=====CALORIES BURNED=====");
                     a.displayCaloriesBurned(activities);
+
+
                 }
+
+
             }
         } while (choice != 0);
     }
