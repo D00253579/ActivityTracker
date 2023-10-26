@@ -1,3 +1,5 @@
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -90,7 +92,11 @@ public class ActivityDetails implements Comparable<ActivityDetails> {
             return Intensity.VeryVigorous;
         }
     }
-
+    public double getCaloriesBurned(){
+        double calories = 0;
+        calories=distance*duration;
+    return calories;
+    }
     //GETTERS
     public String getActivityType() {
         return activityType;
