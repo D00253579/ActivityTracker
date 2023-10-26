@@ -58,11 +58,28 @@ public class Activity {
     }
 
     public void displayCaloriesBurned(ArrayList<ActivityDetails> activities) {
-        double calories = 0;
 
         for (ActivityDetails a : activities) {
-            calories = a.getDistance() * a.getDuration();
-            System.out.println("Calories Burned: " + calories);
+
+            System.out.println("Calories Burned: " + a.getCaloriesBurned());
         }
     }
+    public void DateIsolation(ArrayList<ActivityDetails> activities){
+        for (ActivityDetails a:activities) {
+            int d, m, y;
+//            System.out.println(a.getDate());
+            int slashcounter = 0;
+            if (a.getDate().contains("/")) {
+                System.out.println(a.getDate().indexOf("/"));
+                if (slashcounter==1) {
+                    d = a.getDate().length();
+//                    System.out.println(d);
+                } else if (slashcounter == 2) {
+                    m = a.getDate().length();
+                } else {
+                    y = a.getDate().length();
+                }
+            }
+        }
+        }
 }
