@@ -62,7 +62,7 @@ public class MainApp {
         System.out.println("6: Distance (Ascending/Descending)");
         System.out.println("7: Display Natural Ordering");
         System.out.println("8: Display intensity");
-        System.out.println("9: Display Calories Burned");
+        System.out.println("9: Display Statistics");
 
     }
 
@@ -86,7 +86,7 @@ public class MainApp {
                     break;
                 }
                 case 2: {
-                    System.out.println("Calories Burned Descending");
+                    System.out.println("==============================CALORIES BURNED DESCENDING==============================");
 
                     Collections.sort(activities, new Comparator<ActivityDetails>() {
                         @Override
@@ -107,7 +107,7 @@ public class MainApp {
 //                    comp = new DateComparator();
 //                    Collections.sort(activities, comp);
 //                    a.displayData(activities);
-a.DateIsolation(activities);
+//                   a.DateIsolation(activities);
                     break;
                 }
                 case 4: {
@@ -151,12 +151,9 @@ a.DateIsolation(activities);
                     a.displayIntensity(activities);
                     break;
                 }
-                //TODO: Inner class for calories burned
-                case 9: {
-                    System.out.println("=====CALORIES BURNED=====");
-                    a.displayCaloriesBurned(activities);
-
-
+                case 9:{
+                    System.out.println("===============STATISTICS================");
+a.AverageCaloriesBurned(activities);
                 }
 
 
