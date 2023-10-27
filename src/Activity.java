@@ -61,25 +61,18 @@ public class Activity {
 
         for (ActivityDetails a : activities) {
 
-            System.out.println("Calories Burned: " + a.getCaloriesBurned());
+            System.out.println("Activity: "+a.getActivityType()+"\n Calories Burned: " + a.getCaloriesBurned()+"\n");
         }
     }
-    public void DateIsolation(ArrayList<ActivityDetails> activities){
-        for (ActivityDetails a:activities) {
-            int d, m, y;
-//            System.out.println(a.getDate());
-            int slashcounter = 0;
-            if (a.getDate().contains("/")) {
-                System.out.println(a.getDate().indexOf("/"));
-                if (slashcounter==1) {
-                    d = a.getDate().length();
-//                    System.out.println(d);
-                } else if (slashcounter == 2) {
-                    m = a.getDate().length();
-                } else {
-                    y = a.getDate().length();
-                }
-            }
+public void AverageCaloriesBurned(ArrayList<ActivityDetails> activities){
+    double Calories=0;
+    double averageCalories=0;
+    double total=0;
+        for (ActivityDetails a : activities) {
+total++;
+Calories+=a.getCaloriesBurned();
         }
-        }
+       averageCalories=Calories/total;
+    System.out.printf("Average Calories Burned: %.2f ",averageCalories);
+    }
 }
