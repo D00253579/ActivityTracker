@@ -7,15 +7,37 @@ import java.util.StringTokenizer;
 import java.util.Comparator;
 
 public class MainApp {
-    public static void readFile(String fileName, ArrayList<ActivityDetails> activities, boolean hasHeaders) throws IOException {
-        //reads in the activities csv file
-        File f = new File(fileName);
+    public static void readFile(ArrayList<ActivityDetails> activities, boolean hasHeaders) throws IOException {
+        //scanner for the user input
+        Scanner userInput = new Scanner(System.in);
+
+        //set file name to null before the do while loop
+        //when the user inputs the correct name, the users input will be assigned as the file name
+        String fileName = null;
+        File f = null;
+
+        do {
+            //ask the user to input the name of the csv file
+            System.out.println("Enter the name of your csv file: ");
+            //assign the fileName to the users answer
+            fileName = userInput.nextLine();
+
+            //reads in the csv file
+            f = new File(fileName);
+
+            //if the fileName does not exist
+            if (!f.exists()) {
+                System.out.println("\n" + "File name: " + fileName + " is incorrect. Please try again");
+            }
+        } while (!f.exists());
+
         //scanning through the csv file
         Scanner in = new Scanner(f);
 
         String line;
         boolean headersRead = false;
 
+        //using a while loop to find and read in headers in the csv file
         while (in.hasNextLine()) {
             line = in.nextLine();
             if (!hasHeaders || hasHeaders && headersRead) {
@@ -32,6 +54,7 @@ public class MainApp {
     }
 
     private static ActivityDetails parseLine(String line) {
+        //declare fields for activity
         String activityType;
         String date;
         int duration;
@@ -48,6 +71,7 @@ public class MainApp {
         distance = Double.parseDouble(st.nextToken().trim());
         heartRate = Double.parseDouble(st.nextToken().trim());
 
+        //returning the activity fields after white spaces have been removed
         return new ActivityDetails(activityType, date, duration, distance, heartRate);
     }
 
@@ -63,13 +87,13 @@ public class MainApp {
         System.out.println("7: Display Natural Ordering");
         System.out.println("8: Display intensity");
         System.out.println("9: Display Statistics");
-
+        System.out.println("10: Display By Activity");
     }
 
 
     public static void main(String[] args) throws IOException {
         ArrayList<ActivityDetails> activities = new ArrayList<>();
-        readFile("Activities.csv", activities, true);
+        readFile(activities, true);
   /*Cycle through each piece of data in the CSV file and allows us to run our
                     class commands and isolate each piece of data.
                     */
@@ -151,12 +175,15 @@ public class MainApp {
                     a.displayIntensity(activities);
                     break;
                 }
-                case 9:{
+                case 9: {
                     System.out.println("===============STATISTICS================");
-a.AverageCaloriesBurned(activities);
+                    a.AverageCaloriesBurned(activities);
+                    break;
                 }
-
-
+                case 10:{
+                    System.out.println("===============ACTIVITIES================");
+                    a.activityTypes(activities);
+                }
             }
         } while (choice != 0);
     }
