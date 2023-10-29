@@ -127,11 +127,15 @@ public class MainApp {
                     break;
                 }
                 case 3: {
-//                    System.out.println("Date Ascending");
-//                    comp = new DateComparator();
-//                    Collections.sort(activities, comp);
-//                    a.displayData(activities);
-//                   a.DateIsolation(activities);
+                    System.out.println("Date Ascending: ");
+                    comp = new AscDateComparator();
+                    Collections.sort(activities, comp);
+                    a.displayData(activities);
+
+                    System.out.println("\nDate Descending: ");
+                    comp = new DescDateComparator();
+                    Collections.sort(activities, comp);
+                    a.displayData(activities);
                     break;
                 }
                 case 4: {
@@ -176,7 +180,10 @@ public class MainApp {
                     break;
                 }
                 case 9: {
-                    System.out.println("===============STATISTICS================");
+                    System.out.println("==========================STATISTICS===========================");
+                    System.out.println("\n================AVERAGE DISTANCE PER ACTIVITY================");
+                    a.AverageDistanceByActivity(activities);
+                    System.out.println("\n==============AVERAGE CALORIES BURNED================");
                     a.AverageCaloriesBurned(activities);
                     break;
                 }
@@ -184,6 +191,7 @@ public class MainApp {
                     System.out.println("===============ACTIVITIES================");
                     a.activityTypes(activities);
                 }
+
             }
         } while (choice != 0);
     }

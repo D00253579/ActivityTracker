@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -67,6 +68,38 @@ public class Activity {
         }
     }
 
+    public void AverageDistanceByActivity(ArrayList<ActivityDetails>activities){
+        double totalSwimming = 0,totalRunning=0,totalCycling=0;
+        double distanceSwimming=0, distanceRunning=0,distanceCycling=0;
+        double averageDistanceSwimming,averageDistanceRunning,averageDistanceCycling;
+        for (ActivityDetails a:activities){
+            switch (a.getActivityType()) {
+                case "Swimming": {
+                    totalSwimming++;
+                    distanceSwimming += a.getDistance();
+                break;
+                }
+                case "Running" : {
+                    totalRunning++;
+                    distanceRunning += a.getDistance();
+
+                break;
+                }
+                case "Cycling": {
+                    totalCycling++;
+                    distanceCycling += a.getDistance();
+                break;
+                }
+            }
+        }
+        averageDistanceSwimming=distanceSwimming/totalSwimming;
+        averageDistanceRunning=distanceRunning/totalRunning;
+        averageDistanceCycling=distanceCycling/totalCycling;
+        System.out.printf("Swimming: %.2fkm\n",averageDistanceSwimming);
+        System.out.printf("Running: %.2fkm\n",averageDistanceRunning);
+        System.out.printf("Cycling: %.2fkm\n",averageDistanceCycling);
+
+    }
     public void AverageCaloriesBurned(ArrayList<ActivityDetails> activities) {
         double Calories = 0;
         double averageCalories = 0;
@@ -76,8 +109,18 @@ public class Activity {
             Calories += a.getCaloriesBurned();
         }
         averageCalories = Calories / total;
-        System.out.printf("Average Calories Burned: %.2f ", averageCalories);
+        System.out.printf("Average Calories Burned: %.2f \n", averageCalories);
     }
+//Was using this function temporarily to check if the split function had worked and thought of what how I would isolate them further.
+
+//        public void DateIsolation(ArrayList<ActivityDetails>activities) {
+//            for (ActivityDetails a : activities) {
+//                String str = a.getDate();
+//                String[] string = str.split("/");
+//                String DateSort = Arrays.toString(string);
+//                System.out.println(DateSort);
+//            }
+//        }
 
     //create a mini menu method for the subsets
     //options are:
