@@ -11,10 +11,10 @@ public class MainApp {
         //scanner for the user input
         Scanner userInput = new Scanner(System.in);
 
-        //set file name to null before the do while loop
+        //declare file name before do loop
         //when the user inputs the correct name, the users input will be assigned as the file name
-        String fileName = null;
-        File f = null;
+        String fileName;
+        File f;
 
         do {
             //ask the user to input the name of the csv file
@@ -87,9 +87,8 @@ public class MainApp {
         System.out.println("7: Display Natural Ordering");
         System.out.println("8: Display intensity");
         System.out.println("9: Display Statistics");
-        System.out.println("10: Display By Activity");
+        System.out.println("11: View Activity Fields");
     }
-
 
     public static void main(String[] args) throws IOException {
         ArrayList<ActivityDetails> activities = new ArrayList<>();
@@ -165,11 +164,11 @@ public class MainApp {
                     break;
                 }
                 case 7: {
+                    //take this out at the end
                     System.out.println("Natural Ordering: ");
                     a.displayNaturalOrdering(activities);
                     break;
                 }
-
                 case 8: {
                     System.out.println("=================INTENSITY===============");
                     a.displayIntensity(activities);
@@ -180,9 +179,8 @@ public class MainApp {
                     a.AverageCaloriesBurned(activities);
                     break;
                 }
-                case 10:{
-                    System.out.println("===============ACTIVITIES================");
-                    a.activityTypes(activities);
+                case 11:{
+                    a.subsetMenu(activities);
                 }
             }
         } while (choice != 0);

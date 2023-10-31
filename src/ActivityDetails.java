@@ -5,25 +5,26 @@ import java.util.Collections;
 
 public class ActivityDetails implements Comparable<ActivityDetails> {
 
-    public int compare(ActivityDetails a) {
+    @Override
+    public int compareTo(ActivityDetails a) {
         if (duration == a.duration) {
             if (distance == a.distance) {
                 return activityType.compareTo(a.activityType);
             }
             return (int) (distance - a.distance);
         }
-        return a.duration - duration;
+        return duration - a.duration;
     }
 
-    @Override
-    public int compareTo(ActivityDetails a) {
-        if (duration < a.getDuration()) {
-            return -1;
-        } else if (duration > a.getDuration()) {
-            return 1;
-        }
-        return 0;
-    }
+//    @Override
+//    public int compareTo(ActivityDetails a) {
+//        if (duration < a.getDuration()) {
+//            return -1;
+//        } else if (duration > a.getDuration()) {
+//            return 1;
+//        }
+//        return 0;
+//    }
 
     private String activityType;
     private String date;
@@ -92,11 +93,13 @@ public class ActivityDetails implements Comparable<ActivityDetails> {
             return Intensity.VeryVigorous;
         }
     }
-    public double getCaloriesBurned(){
+
+    public double getCaloriesBurned() {
         double calories = 0;
-        calories=distance*duration;
-    return calories;
+        calories = distance * duration;
+        return calories;
     }
+
     //GETTERS
     public String getActivityType() {
         return activityType;
@@ -143,7 +146,6 @@ public class ActivityDetails implements Comparable<ActivityDetails> {
     public String toString() {
         return "ActivityDetails{" + "activityType='" + activityType + '\'' + ", date='" + date + '\'' + ", duration=" + duration + ", distance=" + distance + ", heartRate=" + heartRate + '}';
     }
-//Sorting duration by descending
 
 
 }
