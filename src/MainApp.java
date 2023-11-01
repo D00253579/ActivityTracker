@@ -75,21 +75,6 @@ public class MainApp {
         return new ActivityDetails(activityType, date, duration, distance, heartRate);
     }
 
-    public static void displayMenu() {
-        System.out.println("\n==============================ACTIVITY TRACKER===============================");
-        System.out.println("0: Exit");
-        System.out.println("1: Display All data");
-        System.out.println("2: Calories Burned (Descending)");
-        System.out.println("3: Date (Ascending/Descending)");
-        System.out.println("4: Activity Duration (Ascending/Descending)");
-        System.out.println("5: Type of Activity");
-        System.out.println("6: Distance (Ascending/Descending)");
-        System.out.println("7: Display Natural Ordering");
-        System.out.println("8: Display intensity");
-        System.out.println("9: Display Statistics");
-        System.out.println("11: View Activity Fields");
-    }
-
     public static void main(String[] args) throws IOException {
         ArrayList<ActivityDetails> activities = new ArrayList<>();
         readFile(activities, true);
@@ -101,7 +86,7 @@ public class MainApp {
         int choice;
         Comparator<ActivityDetails> comp = null;
         do {
-            displayMenu();
+            a.displayMenu(activities);
             choice = key.nextInt();
             switch (choice) {
                 case 1: {
@@ -110,7 +95,6 @@ public class MainApp {
                 }
                 case 2: {
                     System.out.println("==============================CALORIES BURNED DESCENDING==============================");
-
                     Collections.sort(activities, new Comparator<ActivityDetails>() {
                         @Override
                         public int compare(ActivityDetails o1, ActivityDetails o2) {
@@ -167,10 +151,24 @@ public class MainApp {
                     a.displayData(activities);
                     break;
                 }
+                //Binary search included in case 7
                 case 7: {
-                    //take this out at the end
                     System.out.println("Natural Ordering: ");
                     a.displayNaturalOrdering(activities);
+
+                    System.out.println("\nUsing binary search: ");
+                    comp = new ActivityTypeComparator();
+
+                    Collections.sort(activities, comp);
+                    ActivityDetails ad = new ActivityDetails("Swimming", "23/01/2024", 93, 5.8, 143);
+
+                    int index = Collections.binarySearch(activities, ad, comp);
+
+                    if (index >= 0) {
+                        System.out.println("Found " + activities.get(index) + " at index " + index);
+                    } else {
+                        System.out.println(ad + " : Not found");
+                    }
                     break;
                 }
                 case 8: {
@@ -186,10 +184,9 @@ public class MainApp {
                     a.AverageCaloriesBurned(activities);
                     break;
                 }
-                case 11:{
+                case 10: {
                     a.subsetMenu(activities);
                 }
-
             }
         } while (choice != 0);
     }
