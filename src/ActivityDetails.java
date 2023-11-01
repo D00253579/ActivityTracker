@@ -16,6 +16,7 @@ public class ActivityDetails implements Comparable<ActivityDetails> {
         return duration - a.duration;
     }
 
+
 //    @Override
 //    public int compareTo(ActivityDetails a) {
 //        if (duration < a.getDuration()) {
@@ -146,8 +147,6 @@ public class ActivityDetails implements Comparable<ActivityDetails> {
     public String toString() {
         return "ActivityDetails{" + "activityType='" + activityType + '\'' + ", date='" + date + '\'' + ", duration=" + duration + ", distance=" + distance + ", heartRate=" + heartRate + '}';
     }
-
-
 }
 
 
