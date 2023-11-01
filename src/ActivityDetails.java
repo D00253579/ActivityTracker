@@ -1,10 +1,6 @@
-import org.w3c.dom.ls.LSOutput;
-
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class ActivityDetails implements Comparable<ActivityDetails> {
-
+//Sorting the data into it's natural order based on the duration of the activity, the distance covered and the type of activity.
     @Override
     public int compareTo(ActivityDetails a) {
         if (duration == a.duration) {
@@ -16,7 +12,7 @@ public class ActivityDetails implements Comparable<ActivityDetails> {
         return duration - a.duration;
     }
 
-
+//Original code that was sorting the duration before accounting for the natural ordering
 //    @Override
 //    public int compareTo(ActivityDetails a) {
 //        if (duration < a.getDuration()) {
@@ -33,7 +29,7 @@ public class ActivityDetails implements Comparable<ActivityDetails> {
     private double distance;
     private double heartRate;
 
-    public static enum Intensity {VeryLight, Light, Moderate, Vigorous, VeryVigorous}
+    public  enum Intensity {VeryLight, Light, Moderate, Vigorous, VeryVigorous}
 
 
     //CONSTRUCTORS
@@ -53,6 +49,7 @@ public class ActivityDetails implements Comparable<ActivityDetails> {
         this.heartRate = heartRate;
     }
 
+    //Applying conditions to the enums based on distance so that they can display the correct term based on the user's data.
     public Intensity getIntensitySwimming() {
         if (distance < 1.25) {
             return Intensity.VeryLight;
@@ -95,6 +92,8 @@ public class ActivityDetails implements Comparable<ActivityDetails> {
         }
     }
 
+    /*This method calculates the calories that the user burns based on the data and returns it.
+    It can be calculated by the distance the user covered multiplied by the duration of the activity.*/
     public double getCaloriesBurned() {
         double calories = 0;
         calories = distance * duration;

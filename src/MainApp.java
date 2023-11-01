@@ -86,15 +86,19 @@ public class MainApp {
         int choice;
         Comparator<ActivityDetails> comp = null;
         do {
+            //Calls the menu method
             a.displayMenu(activities);
+            //Takes users input to display which method they would like to see.
             choice = key.nextInt();
             switch (choice) {
                 case 1: {
+                    //Displays all the data.
                     a.displayData(activities);
                     break;
                 }
                 case 2: {
                     System.out.println("==============================CALORIES BURNED DESCENDING==============================");
+                    //Anonymous Inner class for sorting in descending order.
                     Collections.sort(activities, new Comparator<ActivityDetails>() {
                         @Override
                         public int compare(ActivityDetails o1, ActivityDetails o2) {
@@ -110,12 +114,14 @@ public class MainApp {
                     break;
                 }
                 case 3: {
-                    System.out.println("Date Ascending: ");
+                    System.out.println("==============================DATE ASCENDING==============================");
+                    //Calls the date comparator class for ascending order.
                     comp = new AscDateComparator();
                     Collections.sort(activities, comp);
                     a.displayData(activities);
 
-                    System.out.println("\nDate Descending: ");
+                    System.out.println("\n==============================DATE DESCENDING==============================");
+                    //Calls the date comparator class for descending order.
                     comp = new DescDateComparator();
                     Collections.sort(activities, comp);
                     a.displayData(activities);
@@ -126,26 +132,26 @@ public class MainApp {
                     to sort data by duration (Ascending/Descending)
                      */
                     //Descending
-                    System.out.println("Duration Descending");
+                    System.out.println("===========================DURATION DESCENDING===============================");
                     a.displayDurationDesc(activities);
-                    System.out.println("Duration Ascending");
+                    System.out.println("===========================DURATION ASCENDING===============================");
                     a.displayDurationAsc(activities);
                     break;
                 }
                 case 5: {
-                    System.out.println("Type Of Activity");
+                    System.out.println("============================TYPE OF ACTIVITY===============================");
                     comp = new ActivityTypeComparator();
                     Collections.sort(activities, comp);
                     a.displayData(activities);
                     break;
                 }
                 case 6: {
-                    System.out.println("Ascending Distance:");
+                    System.out.println("============================DISTANCE ASCENDING==============================");
                     comp = new DistanceComparator();
                     Collections.sort(activities, comp);
                     a.displayData(activities);
 
-                    System.out.println("\nDescending Distance:");
+                    System.out.println("\n===========================DISTANCE DESCENDING==============================");
                     comp = new DescDistanceComparator();
                     Collections.sort(activities, comp);
                     a.displayData(activities);
@@ -153,10 +159,10 @@ public class MainApp {
                 }
                 //Binary search included in case 7
                 case 7: {
-                    System.out.println("Natural Ordering: ");
+                    System.out.println("============================NATURAL ORDERING================================= ");
                     a.displayNaturalOrdering(activities);
 
-                    System.out.println("\nUsing binary search: ");
+                    System.out.println("\n=========================BINARY SEARCH==============================\n");
                     comp = new ActivityTypeComparator();
 
                     Collections.sort(activities, comp);
@@ -173,12 +179,14 @@ public class MainApp {
                 }
                 case 8: {
                     System.out.println("=================INTENSITY===============");
+                    //Displays intensity method
                     a.displayIntensity(activities);
                     break;
                 }
                 case 9: {
                     System.out.println("==========================STATISTICS===========================");
                     System.out.println("\n================AVERAGE DISTANCE PER ACTIVITY================");
+                    //Displays averageDistance and averageCalories Method
                     a.AverageDistanceByActivity(activities);
                     System.out.println("\n==============AVERAGE CALORIES BURNED================");
                     a.AverageCaloriesBurned(activities);
