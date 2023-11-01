@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Activity {
     ArrayList<ActivityDetails> activities = new ArrayList<>();
 
-    //method to display the main menu, called in the mainApp
+    //Method to display the main menu, called in the mainApp
     public static void displayMenu(ArrayList<ActivityDetails> activities) {
         System.out.println("\n==============================ACTIVITY TRACKER===============================");
         System.out.println("0: Exit");
@@ -24,21 +24,35 @@ public class Activity {
     //Method to display the data passed in from the CSV
     //Have the headers outputting too
     public void displayData(ArrayList<ActivityDetails> activities) {
-        System.out.println("\n==============DISPLAY DATA==============\n");
+        System.out.println("\n==============================DISPLAY DATA===============================\n");
     /*enhanced for loop to cycle through the data in the arraylist and pass it to the object
          'a' to access class methods. */
-        System.out.printf("%10s,%2s,%6s,%7s,%7s", "Activity Type", "Date", "Duration", "Distance", "Average Heart Rate\n");
+        System.out.printf("%-12s,%-12s,%-12s,%-12s,%-12s", "Activity Type", "Date", "Duration", "Distance", "Average Heart Rate\n");
 
         for (ActivityDetails a : activities) {
             //                    System.out.println(a.toString());
         /*Displaying the data in a neat matter using printf to include an appropriate amount of
                         white space and to round the doubles down to 1 decimal point*/
-            System.out.printf("%10s,%11s,%4d,%5.1f,%7.1f\n", a.getActivityType(), a.getDate(), a.getDuration(), a.getDistance(), a.getHeartRate());
+            System.out.printf("%-12s,%-12s,%-12d,%-12.1f,%-12.1f\n", a.getActivityType(), a.getDate(), a.getDuration(), a.getDistance(), a.getHeartRate());
         }
     }
 
-    //Sorting duration by ascending and descending
-    //using lambda expression
+//    public void displayData(ArrayList<ActivityDetails> activities) {
+//        System.out.println("\n==============DISPLAY DATA==============\n");
+//    /*enhanced for loop to cycle through the data in the arraylist and pass it to the object
+//         'a' to access class methods. */
+//        System.out.printf("%10s,%2s,%6s,%9s,%10s", "Activity Type", "Date", "Duration", "Distance", "Average Heart Rate\n");
+//
+//        for (ActivityDetails a : activities) {
+//            //                    System.out.println(a.toString());
+//        /*Displaying the data in a neat matter using printf to include an appropriate amount of
+//                        white space and to round the doubles down to 1 decimal point*/
+//            System.out.printf("%10s,%11s,%4d,%5.1f,%7.1f\n", a.getActivityType(), a.getDate(), a.getDuration(), a.getDistance(), a.getHeartRate());
+//        }
+//    }
+
+    //Sorting duration by ascending - and calling the displayData to view the sorted ascending duration
+    //Using lambda expression
     public void displayDurationAsc(ArrayList<ActivityDetails> activities) {
         Collections.sort(activities,
                 (ActivityDetails a1, ActivityDetails a2) ->
@@ -48,6 +62,8 @@ public class Activity {
         displayData(activities);
     }
 
+    //Sorting duration by descending - and calling the displayData to view the sorted ascending duration
+    //Using lambda expression
     public void displayDurationDesc(ArrayList<ActivityDetails> activities) {
         Collections.sort(activities,
                 (ActivityDetails a1, ActivityDetails a2) ->
@@ -57,7 +73,8 @@ public class Activity {
         displayData(activities);
     }
 
-    //display by natural ordering
+    //Display by natural ordering - using the compareTo in the ActivityDetails class
+    //Comparing each of the activity fields - so the sorted fields can be used for binary search
     public void displayNaturalOrdering(ArrayList<ActivityDetails> activities) {
         Collections.sort(activities);
         displayData(activities);
@@ -148,12 +165,16 @@ public class Activity {
         System.out.println("15: Exit");
     }
 
+    //Declare scanner outside the methods - can access key in the methods
+    //Instead of repeatedly declaring scanners within the methods
     Scanner key = new Scanner(System.in);
 
-    // method to display the subset menu: will use cases similarly to the main menu
+    //Method to display the subset menu, using a similar do while loop to the main menu
     public void subsetMenu(ArrayList<ActivityDetails> activities) {
+        //Declaring an activity object - used to access methods
         Activity a = new Activity();
 
+//        boolean exit = true;
         int choice;
         do {
             a.displaySubsetMenu(activities);
@@ -170,7 +191,7 @@ public class Activity {
                     break;
                 }
                 case 13: {
-                    System.out.println("===============TYPE OF ENERGY EXPENDED================");
+                    System.out.println("=============TYPE OF ENERGY EXPENDED============");
                     a.typeEnergyExpended(activities);
                     break;
                 }
@@ -180,12 +201,14 @@ public class Activity {
                 }
                 case 15: {
                     //Breaks the do while loop - by exiting the program
+//                    exit = false;
                     System.exit(0);
                     break;
                 }
             }
         } while (true);
     }
+
 //
 //    Caitlin: I was having issues with exiting the subset menu, I originally wanted it to be able to go back to the main menu,
 //    however the main menu is not within a method so I couldn't access it in this class from the mainApp.
@@ -226,6 +249,7 @@ public class Activity {
 //            runActivity = userAnswer.equalsIgnoreCase("yes");
 //        } while (runActivity);
 
+    //Method to view the activity type subsets
     public void selectActivityType(ArrayList<ActivityDetails> activities) {
         String selectedActvity = "";
         boolean activityExists = false;
@@ -234,15 +258,20 @@ public class Activity {
         System.out.println("Select an activity type (cycling, running, or swimming): ");
         selectedActvity = key.nextLine();
 
-        System.out.printf("%10s,%2s,%6s,%7s,%7s", "Activity Type", "Date", "Duration", "Distance", "Average Heart Rate\n");
-        //using getActivityType to get the selected activity type
+        System.out.printf("%-12s,%-12s,%-12s,%-12s,%-12s", "Activity Type", "Date", "Duration", "Distance", "Average Heart Rate\n");
+
+        //Iterates through the activities arrayList in an enhanced for loop
+        //Using getActivityType to get the selected activity type
+        //Returns true if the inputted activity exists in the arrayList
         for (ActivityDetails a : activities) {
             if (a.getActivityType().equalsIgnoreCase(selectedActvity)) {
-                System.out.printf("%10s,%11s,%4d,%5.1f,%7.1f\n", a.getActivityType(), a.getDate(), a.getDuration(), a.getDistance(), a.getHeartRate());
+                System.out.printf("%-12s,%-12s,%-12d,%-12.1f,%-12.1f\n", a.getActivityType(), a.getDate(), a.getDuration(), a.getDistance(), a.getHeartRate());
                 activityExists = true;
             }
         }
 
+        //If the inputted activity does not exist in the arraylist
+        //Then a message is output
         if (!activityExists) {
             System.out.println("No activities found called " + selectedActvity);
         }
@@ -250,55 +279,70 @@ public class Activity {
         subsetMenu(activities);
     }
 
-    //above a minimum distance
-    //for minimum distance and duration - ask the user to input a number and output the distances and durations which are above this
-    //use getters
+    //Declare boolean outside the methods as it is used in both the minDistance() and minDuration()
     boolean aboveMin = false;
 
+    //Method to view the activities above a minimum distance subset
     public void minDistance(ArrayList<ActivityDetails> activities) {
         double min = 0.0;
 
+        //Asking the user to input a number
         System.out.println("Input a minimum distance");
         min = key.nextDouble();
 
-        System.out.printf("%10s,%2s,%6s,%7s,%7s", "Activity Type", "Date", "Duration", "Distance", "Average Heart Rate\n");
+//       Output the activity distances which are above the users number
+        //Using getter method
+        //If there are distances above the users minimum then they will be output and aboveMin will turn true
+
+        System.out.printf("%-12s,%-12s,%-12s,%-12s,%-12s", "Activity Type", "Date", "Duration", "Distance", "Average Heart Rate\n");
         for (ActivityDetails a : activities) {
             if (a.getDistance() > min) {
-                System.out.printf("%10s,%11s,%4d,%5.1f,%7.1f\n", a.getActivityType(), a.getDate(), a.getDuration(), a.getDistance(), a.getHeartRate());
+                System.out.printf("%-12s,%-12s,%-12d,%-12.1f,%-12.1f\n", a.getActivityType(), a.getDate(), a.getDuration(), a.getDistance(), a.getHeartRate());
                 aboveMin = true;
             }
         }
+
+        //If aboveMin is false then message will be output
         if (!aboveMin) {
             System.out.println("No activities found above the minimum distance: " + min);
         }
+
         //Take the user back to the subset menu
         subsetMenu(activities);
     }
 
-    //above a minimum duration
+    //Method to view the activities above a minimum duration subset
     public void minDuration(ArrayList<ActivityDetails> activities) {
         int min = 0;
 
+        //Asking the user to input a number
         System.out.println("Input a minimum duration");
         min = key.nextInt();
 
-        System.out.printf("%10s,%2s,%6s,%7s,%7s", "Activity Type", "Date", "Duration", "Distance", "Average Heart Rate\n");
+//       Output the activity durations which are above the users number
+        //Using getter method
+        //If there are durations above the users minimum then they will be output and aboveMin will turn true
+
+        System.out.printf("%-12s,%-12s,%-12s,%-12s,%-12s", "Activity Type", "Date", "Duration", "Distance", "Average Heart Rate\n");
         for (ActivityDetails a : activities) {
             if (a.getDuration() > min) {
-                System.out.printf("%10s,%11s,%4d,%5.1f,%7.1f\n", a.getActivityType(), a.getDate(), a.getDuration(), a.getDistance(), a.getHeartRate());
+                System.out.printf("%-12s,%-12s,%-12d,%-12.1f,%-12.1f\n", a.getActivityType(), a.getDate(), a.getDuration(), a.getDistance(), a.getHeartRate());
                 aboveMin = true;
             }
         }
+
+        //If aboveMin is false then message will be output
         if (!aboveMin) {
             System.out.println("No activities found above the minimum duration: " + min);
         }
+
         //Take the user back to the subset menu
         subsetMenu(activities);
     }
 
-    // type of energy expended (using the enums)
+    //Method to view the type of energy expended subset
+    //Using the enums
     public void typeEnergyExpended(ArrayList<ActivityDetails> activities) {
-
         String selectedEnergy = "";
         boolean energyTypeExists = false;
 
@@ -307,7 +351,7 @@ public class Activity {
         selectedEnergy = key.nextLine();
 
         //using getActivityType to get the selected activity type
-//if statement each for swimming,cycling and running,
+//if statement each for swimming,cycling and running
         for (ActivityDetails a : activities) {
             if (a.getActivityType().equalsIgnoreCase(selectedEnergy)) {
                 if (selectedEnergy.equalsIgnoreCase("Swimming")) {
@@ -324,11 +368,11 @@ public class Activity {
             }
         }
 
+        //If energyTypeExists is set to false then a message will be output to the user
         if (!energyTypeExists) {
             System.out.println("No activities found called " + selectedEnergy);
         }
         //Take the user back to the subset menu
         subsetMenu(activities);
     }
-
 }
