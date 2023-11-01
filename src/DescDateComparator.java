@@ -10,12 +10,14 @@ public class DescDateComparator implements Comparator<ActivityDetails>  {
             int day2=Integer.parseInt(str2[0]);
             int month2=Integer.parseInt(str2[1]);
             int year2=Integer.parseInt(str2[2]);
-
+//If the years are not the same then it compares the years and sorts in descending order.
             if (year1!=year2){
                 return Integer.compare(year2,year1);
+                //If the months are not the same then it compares the months and sorts in descending order.
             }else if (month1!=month2){
                 return Integer.compare(month2,month1);
             }
+            //If the days are not the same then it compares the days and sorts in ascending order.
             return Integer.compare(day2,day1);
         }
 

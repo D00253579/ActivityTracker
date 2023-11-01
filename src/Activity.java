@@ -79,19 +79,21 @@ public class Activity {
         Collections.sort(activities);
         displayData(activities);
     }
-
+/*Accessing the enums that have been set in the ActivityDetails Class and uses an if statement to display the data based on
+    the different activity types as each activity have different intensity levels.
+    */
     public void displayIntensity(ArrayList<ActivityDetails> activities) {
         for (ActivityDetails a : activities) {
             if (a.getActivityType().equals("Swimming")) {
-                System.out.println("Activity: " + a.getActivityType() + " Intensity: " + a.getIntensitySwimming());
+                System.out.println("Activity: " + a.getActivityType() + "    Intensity: " + a.getIntensitySwimming());
             } else if (a.getActivityType().equals("Running")) {
-                System.out.println("Activity: " + a.getActivityType() + " Intensity: " + a.getIntensityRunning());
+                System.out.println("Activity: " + a.getActivityType() + "     Intensity: " + a.getIntensityRunning());
             } else if (a.getActivityType().equals("Cycling")) {
-                System.out.println("Activity: " + a.getActivityType() + " Intensity: " + a.getIntensityCycling());
+                System.out.println("Activity: " + a.getActivityType() + "     Intensity: " + a.getIntensityCycling());
             }
         }
     }
-
+//Accesses the getCaloriesBurned method created in the ActivityDetails Class and displays it based on each activity
     public void displayCaloriesBurned(ArrayList<ActivityDetails> activities) {
 
         for (ActivityDetails a : activities) {
@@ -100,9 +102,13 @@ public class Activity {
         }
     }
 
+    //This method gets the averageDistance covered based one each different activity and displays it
     public void AverageDistanceByActivity(ArrayList<ActivityDetails> activities) {
+        //Counters for how many activities were read from file.
         double totalSwimming = 0, totalRunning = 0, totalCycling = 0;
+        //Variables that stored the total distance based on each activity
         double distanceSwimming = 0, distanceRunning = 0, distanceCycling = 0;
+        //Variables that stored the average at the end of the loop and displayed it.
         double averageDistanceSwimming, averageDistanceRunning, averageDistanceCycling;
         for (ActivityDetails a : activities) {
             switch (a.getActivityType()) {
@@ -132,6 +138,7 @@ public class Activity {
         System.out.printf("Cycling: %.2fkm\n", averageDistanceCycling);
     }
 
+    //This method gets the averageCaloriesBurned overall and dislays it.
     public void AverageCaloriesBurned(ArrayList<ActivityDetails> activities) {
         double Calories = 0;
         double averageCalories = 0;
