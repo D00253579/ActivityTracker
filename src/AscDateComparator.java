@@ -1,5 +1,15 @@
 import java.util.Comparator;
 
+/*For the date Comparator I was trying different methods on how to perform the task and came across the Integer.compare method.
+I went online and did some research and found out that I was able to use it for what I wanted to achieve. It works exactly the same
+as if I was to create a comparator for an integer to sort in ascending or descending.
+If x>y then the method returns a value greater than 0
+If x<y then the method returns a value less than 0
+If x=y then the method returns 0
+AMP TutorialKart Pvt Ltd(2018).Java Integer.compare() – Compare two integer values [online].
+    Available at: https://www.tutorialkart.com/java/java-integer-compare/#gsc.tab=0
+    [accessed 29 October 2023].
+*/
 public class AscDateComparator implements Comparator<ActivityDetails> {
     public int compare(ActivityDetails a1,ActivityDetails a2){
         /*This compare method for comparator isolates the String of dates from the csv file by the "/"
